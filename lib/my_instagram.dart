@@ -1,13 +1,10 @@
+import 'package:bai_hoc/my_instagram_reels.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media_flutter/social_media_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-final vIcon = Icon(
-  FontAwesomeIcons.chevronDown,
-  color: Colors.black,
-  size: 15,
-);
+
 final urlImagesALJ = [
   'assets/images/jennyhuynh_body.jpg',
   'assets/images/jennyhuynh_body1.jpg',
@@ -22,27 +19,45 @@ final urlImagesHina = [
   'assets/images/lisa_body4.jpg',
 ];
 
+final urlImagesAnime = [
+  'assets/images/Re_Zero.jpg',
+  'assets/images/YourName.jpg',
+  'assets/images/Sao.jpg',
+  'assets/images/Sakimichan.jpg',
+  'assets/images/NanatsuNoTaizai.jpg',
+];
+
+int _currentIndex = 0;
+
+final List<Widget> _pages = [
+  MyInstagram(),
+  MyInstagramReels(),
+];
+
 class MyInstagram extends StatelessWidget {
   MyInstagram({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFE9EBEE),
+  return Scaffold(
+      backgroundColor: Colors.black38,
       appBar: AppBar(
-        backgroundColor: Color(0xFFE9EBEE),
+        backgroundColor: Colors.black38,
         title: Row(
           children: <Widget>[
-            Text(
-              "Instagram",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 30,
-                fontFamily: 'Pacifico',
-              ),
+            Image(
+              image: AssetImage('assets/images/logo_instagram1.png'),
+              height: 80,
+              width: 110 ,
+              //fit: BoxFit.cover,
+              //alignment: Alignment.center,
             ),
             PopupMenuButton<String>(
-              icon: vIcon,
+              icon: Icon(
+                FontAwesomeIcons.chevronDown , // hoặc bất kỳ biểu tượng nào bạn muốn sử dụng
+                color: Colors.white,
+                size: 12,
+              ),
               onSelected: (value) {
                 if (value == 'follow') {
                   // Xử lý khi chọn "Đang theo dõi"
@@ -102,20 +117,20 @@ class MyInstagram extends StatelessWidget {
                       Icons.favorite_border,
                         // SocialIconsFlutter.facebook,
                       // IconInstagram.heart,
-                       color: Colors.black,
-                       size: 35,
+                       color: Colors.white,
+                       size: 30,
                     ),
                     onPressed: () {
                       // theo dõi.
                     },
                   ),
-                  SizedBox(width: 10), // Khoảng cách 30px giữa biểu tượng
+                  //SizedBox(width: 0.1), // Khoảng cách 30px giữa biểu tượng
                   IconButton(
                     icon: Icon(
                        FontAwesomeIcons.facebookMessenger,
                        // IconInstagram.facebook_messenger,
-                       color: Colors.black,
-                       size: 30,
+                       color: Colors.white,
+                       size: 26,
                     ),
                     onPressed: () {
                       // tin nhắn
@@ -166,7 +181,11 @@ class MyInstagram extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text("Tin của bạn"),
+                          Text("Tin của bạn",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -198,7 +217,11 @@ class MyInstagram extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text("jenny.huynh._"),
+                          Text("jenny.huynh._",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -230,7 +253,11 @@ class MyInstagram extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text("tyquanglee"),
+                          Text("tyquanglee",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -262,7 +289,11 @@ class MyInstagram extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text("thekinnci07"),
+                          Text("thekinnci07",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -294,7 +325,11 @@ class MyInstagram extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text("bngan_0309"),
+                          Text("bngan_0309",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -326,7 +361,11 @@ class MyInstagram extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text("ji_mun"),
+                          Text("ji_mun",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -358,7 +397,11 @@ class MyInstagram extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text("kimnhi462"),
+                          Text("kimnhi462",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -389,7 +432,11 @@ class MyInstagram extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text("jenlisa"),
+                          Text("jenlisa",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -400,7 +447,10 @@ class MyInstagram extends StatelessWidget {
             ),
           ), // ListView status
           //News
-
+          Divider( // Thêm đường kẻ ngang ở đây
+            color: Colors.white,
+            thickness: 0.2,
+          ),
           Container(
             height: 100,
             child: Expanded(
@@ -433,7 +483,7 @@ class MyInstagram extends StatelessWidget {
                     child: Text(
                       "jenny.huynh._",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -446,7 +496,7 @@ class MyInstagram extends StatelessWidget {
                         IconButton(
                           icon: Icon(
                             Icons.more_vert,
-                            color: Colors.black,
+                            color: Colors.white,
                           ),
                           onPressed: () {
                             //Xử lý sự kiện.
@@ -481,63 +531,64 @@ class MyInstagram extends StatelessWidget {
             ),
           ),
 
-      Row(
-        // Đặt căn chỉnh bên phải
-        children: [
-          IconButton(
-            icon: Icon(
-              Icons.favorite_border,
-              // SocialIconsFlutter.facebook,
-              // IconInstagram.heart,
-              color: Colors.black,
-              size: 35,
-            ),
-            onPressed: () {
-              // theo dõi.
-            },
-          ),
-          SizedBox(width: 10),
+          Row(
+            // Đặt căn chỉnh bên phải
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite_border,
+                    // SocialIconsFlutter.facebook,
+                    // IconInstagram.heart,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                  onPressed: () {
+                    // theo dõi.
+                  },
+                ),
+                SizedBox(width: 10),
 
-          IconButton(
-            icon: Icon(
-              FontAwesomeIcons.comment,
-              // SocialIconsFlutter.facebook,
-              // IconInstagram.heart,
-              color: Colors.black,
-              size: 33,
-            ),
-            onPressed: () {
-              // theo dõi.
-            },
-          ),
+                IconButton(
+                  icon: Icon(
+                    FontAwesomeIcons.comment,
+                    // SocialIconsFlutter.facebook,
+                    // IconInstagram.heart,
+                    color: Colors.white,
+                    size: 33,
+                  ),
+                  onPressed: () {
+                    // theo dõi.
+                  },
+                ),
+                SizedBox(width: 10),
 
-          IconButton(
-            icon: Icon(
-              Icons.share_outlined,
-              // SocialIconsFlutter.facebook,
-              // IconInstagram.heart,
-              color: Colors.black,
-              size: 35,
-            ),
-            onPressed: () {
-              // theo dõi.
-            },
-          ),
-          SizedBox(width: 190),
+                IconButton(
+                  icon: Icon(
+                    Icons.send,
+                    // SocialIconsFlutter.facebook,
+                    // IconInstagram.heart,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                  onPressed: () {
+                    // theo dõi.
+                  },
+                ),
+                SizedBox(width: 180),
 
-          IconButton(
-            icon: Icon(
-              Icons.bookmark_border_rounded,
-              // SocialIconsFlutter.facebook,
-              // IconInstagram.heart,
-              color: Colors.black,
-              size: 35,
-            ),
-            onPressed: () {
-              // theo dõi.
-            },
-          ),
-        ]
+                IconButton(
+                  icon: Icon(
+                    Icons.bookmark_border_rounded,
+                    // SocialIconsFlutter.facebook,
+                    // IconInstagram.heart,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                  onPressed: () {
+                    // theo dõi.
+                  },
+                ),
+              ]
           ),
 
           Container(
@@ -572,7 +623,7 @@ class MyInstagram extends StatelessWidget {
                     child: Text(
                       "jenlisa",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -585,7 +636,7 @@ class MyInstagram extends StatelessWidget {
                         IconButton(
                           icon: Icon(
                             Icons.more_vert,
-                            color: Colors.black,
+                            color: Colors.white,
                           ),
                           onPressed: () {
                             //Xử lý sự kiện.
@@ -628,7 +679,7 @@ class MyInstagram extends StatelessWidget {
                     Icons.favorite_border,
                     // SocialIconsFlutter.facebook,
                     // IconInstagram.heart,
-                    color: Colors.black,
+                    color: Colors.white,
                     size: 35,
                   ),
                   onPressed: () {
@@ -642,34 +693,175 @@ class MyInstagram extends StatelessWidget {
                     FontAwesomeIcons.comment,
                     // SocialIconsFlutter.facebook,
                     // IconInstagram.heart,
-                    color: Colors.black,
+                    color: Colors.white,
                     size: 33,
                   ),
                   onPressed: () {
                     // theo dõi.
                   },
                 ),
+                SizedBox(width: 10),
 
                 IconButton(
                   icon: Icon(
-                    Icons.share_outlined,
+                    Icons.send,
                     // SocialIconsFlutter.facebook,
                     // IconInstagram.heart,
-                    color: Colors.black,
+                    color: Colors.white,
                     size: 35,
                   ),
                   onPressed: () {
                     // theo dõi.
                   },
                 ),
-                SizedBox(width: 190),
+                SizedBox(width: 180),
 
                 IconButton(
                   icon: Icon(
                     Icons.bookmark_border_rounded,
                     // SocialIconsFlutter.facebook,
                     // IconInstagram.heart,
-                    color: Colors.black,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                  onPressed: () {
+                    // theo dõi.
+                  },
+                ),
+              ]
+          ),
+
+          Container(
+            height: 100,
+            child: Expanded(
+              // ListView news
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(left: 5),
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.orange,
+                        width: 1.5,
+                      ),
+                    ),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: CircleAvatar(
+                        radius: 25,
+                        backgroundImage:
+                        AssetImage('assets/images/thetime.jpg'),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    // Thay đổi khoảng cách tùy ý
+                    child: Text(
+                      "thetime",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.more_vert,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            //Xử lý sự kiện.
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: CarouselSlider.builder(
+              options: CarouselOptions(
+                height: 500,
+                //autoPlay: true,
+                reverse: true,
+                viewportFraction: 1,
+                //pageSnapping: false,
+                //enableInfiniteScroll: false,
+                //enlargeCenterPage: true,
+                //enlargeStrategy: CenterPageEnlargeStrategy.height,
+                //autoPlayInterval: Duration(seconds: 3),
+                //viewportFraction: 0.85,
+              ),
+              itemCount: urlImagesAnime.length,
+              itemBuilder: (context, index, realIndex) {
+                final urlImage = urlImagesAnime[index];
+                return buildImage(urlImage, index);
+              },
+            ),
+          ),
+
+          Row(
+            // Đặt căn chỉnh bên phải
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite_border,
+                    // SocialIconsFlutter.facebook,
+                    // IconInstagram.heart,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                  onPressed: () {
+                    // theo dõi.
+                  },
+                ),
+                SizedBox(width: 10),
+
+                IconButton(
+                  icon: Icon(
+                    FontAwesomeIcons.comment,
+                    // SocialIconsFlutter.facebook,
+                    // IconInstagram.heart,
+                    color: Colors.white,
+                    size: 33,
+                  ),
+                  onPressed: () {
+                    // theo dõi.
+                  },
+                ),
+                SizedBox(width: 10),
+
+                IconButton(
+                  icon: Icon(
+                    Icons.send,
+                    // SocialIconsFlutter.facebook,
+                    // IconInstagram.heart,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                  onPressed: () {
+                    // theo dõi.
+                  },
+                ),
+                SizedBox(width: 180),
+
+                IconButton(
+                  icon: Icon(
+                    Icons.bookmark_border_rounded,
+                    // SocialIconsFlutter.facebook,
+                    // IconInstagram.heart,
+                    color: Colors.white,
                     size: 35,
                   ),
                   onPressed: () {
@@ -682,16 +874,25 @@ class MyInstagram extends StatelessWidget {
         ],
       ),
 
+
+    //body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
         showSelectedLabels: false, // Ẩn label khi được chọn
         showUnselectedLabels: false, // Ẩn label khi không được chọn
         type: BottomNavigationBarType.fixed,
-        items: [
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             label: "Home",
             icon: Icon(
               Icons.home,
-              color: Colors.black,
+              color: Colors.white,
               size: 30,
             ),
           ),
@@ -699,7 +900,7 @@ class MyInstagram extends StatelessWidget {
             label: "Search",
             icon: Icon(
               Icons.search_outlined,
-              color: Colors.black,
+              color: Colors.white,
               size: 30,
             ),
           ),
@@ -708,18 +909,20 @@ class MyInstagram extends StatelessWidget {
             icon: Icon(
                 Icons.add_circle_outline,
               // IconInstagram.diff_added,
-               color: Colors.black,
+               color: Colors.white,
                size: 30,
             ),
           ),
+
           BottomNavigationBarItem(
             label: "Videos",
             icon: Icon(
               Icons.video_collection,
-              color: Colors.black,
+              color: Colors.white,
               size: 30,
             ),
           ),
+
           BottomNavigationBarItem(
             label: "Profile",
             icon: Container(
@@ -734,6 +937,7 @@ class MyInstagram extends StatelessWidget {
               ),
             ),
           ),
+
         ],
       ),
     );
@@ -746,4 +950,7 @@ class MyInstagram extends StatelessWidget {
       fit: BoxFit.cover,
     ),
   );
+
+  void setState(Null Function() param0) {}
 }
+
